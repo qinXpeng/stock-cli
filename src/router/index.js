@@ -1,13 +1,15 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-const ArticleList = () =>
-    import ( /* webpackChunkName: "group-index" */ '../components/ArticleList.vue')
+const LongHu = () =>
+    import ( /* webpackChunkName: "group-index" */ '../components/LongHu.vue')
 
 const NotFound = () =>
     import ( /* webpackChunkName: "group-not=found" */ '../views/NotFound.vue')
-const ArticleDetails = () =>
-    import ( /* webpackChunkName: "group-ArticleDetails" */ '../components/ArticleDetails.vue')
+const MainStock = () =>
+    import ( /* webpackChunkName: "group-ArticleDetails" */ '../components/MainStock.vue')
+const StStock = () =>
+import ( /* webpackChunkName: "group-ArticleDetails" */ '../components/StStock.vue')
 Vue.use(VueRouter)
 
 //获取原型对象上的push函数
@@ -18,20 +20,23 @@ VueRouter.prototype.push = function push(location) {
 }
 
 const routes = [
-    { path: '/', redirect: 'home' },
-    { path: '/:cid', component: ArticleList, meta: { title: '欢迎来到beeBlog' } ,props: true},
+    { 
+        path: '/', 
+        component: MainStock,
+        props: true
+    },
     {
         path: '*',
         component: NotFound
     },
     {
-        path: '/article/detail/:articleId',
-        component: ArticleDetails,
+        path: '/STStock',
+        component: StStock,
         props: true
     },
     {
-        path: '/category/:cid',
-        component: ArticleList,
+        path: '/LongHu',
+        component: LongHu,
         props: true
     }
 ]

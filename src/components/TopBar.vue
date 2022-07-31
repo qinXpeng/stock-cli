@@ -22,9 +22,6 @@
       return {
       }
     },
-    created(){
-      this.getTopBarType()
-    },
     methods: {
 
         gotoST() {

@@ -21,9 +21,12 @@
                             class="elevation-12"
                         >
                             <template v-slot:[`item.percent`]="{ item }">
-                                <div style="color:red">
+								<v-chip 
+									:text-color="getColor(item.percent)"
+									outlined
+								>
                                     {{ item.percent }}
-                                </div>
+                                </v-chip>
                             </template>
                             <template v-slot:[`item.name`]="{ item }">
                                 <a
@@ -50,8 +53,7 @@
     },
     methods: {
       getColor (calories) {
-        if (calories > 400) return 'red'
-        else if (calories > 200) return 'orange'
+        if (calories > 0) return 'red'
         else return 'green'
       },
       async getStockList(){
